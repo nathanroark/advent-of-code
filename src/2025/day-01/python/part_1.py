@@ -19,10 +19,8 @@ def fancy(value):
 
 
 def Part1(input):
-    password = 50
-    count = 0
-    lines = input.strip().split("\n")
-    for line in lines:
+    password, count = 50, 0
+    for line in input.strip().splitlines():
         direction, rotation = line[0], int(line[1:])
         rotation = rotation if direction == "R" else -rotation
 
