@@ -23,16 +23,13 @@ def Part1(input):
     count = 0
     lines = input.strip().split("\n")
     for line in lines:
-        direction = line[0]
-        rotation = int(line[1:])
-        if direction == "L":
-            rotation *= -1
+        direction, rotation = line[0], int(line[1:])
+        rotation = rotation if direction == "R" else -rotation
 
         password = (password + rotation) % 100
 
         # print(f"The dial is rotated {line} to point at {fancy(password)}.")
 
-        if password == 0:
-            count += 1
+        count += 1 if password == 0 else 0
 
     return count

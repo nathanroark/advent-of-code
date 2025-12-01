@@ -21,27 +21,16 @@ def fancy(value):
 def Part2(input):
     password = 50
     count = 0
-    lines = input.strip().split("\n")
-    for line in lines:
-        direction = line[0]
-        rotation = int(line[1:])
-        if direction == "L":
-            rotation *= -1
-            temp = (password + rotation) // 100
-            rotation %= 100
 
-        print("----------------")
-        print(f"p {password}")
-        print(f"r {rotation}")
-        print(f"t {temp}")
-        password += rotation
-        password %= 100
-        print(f"p {password}")
-        print("----------------")
+    for line in input.strip().splitlines():
+        direction, rotation = line[0], int(line[1:])
+        rotation = rotation if direction == "R" else -rotation
 
-        # print(f"The dial is rotated {line} to point at {fancy(password)}.")
-
-        if password == 0:
+        if direction == "L" and password > 0 and password + rotation < 0:
             count += 1
+
+        password += rotation
+        count += (abs(password) // 100) or (1 if password == 0 else 0)
+        password %= 100
 
     return count
