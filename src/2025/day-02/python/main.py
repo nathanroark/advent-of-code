@@ -1,3 +1,5 @@
+import time
+
 input = open("../data/input.txt", "r", encoding="utf-8").read()
 test_input_1 = open("../data/test-input-1.txt", "r", encoding="utf-8").read()
 
@@ -9,17 +11,20 @@ def Part1Runner():
     part_1_final_answer = 19574776074
     print("-------- Part 1 --------")
     test = Part1(test_input_1)
-    if test == part_1_test_answer:
-        print(f"✅ Test Result:  {test}")
-    else:
+    if test != part_1_test_answer:
         print(f"❌ Test Result:  {test}, expected {part_1_test_answer}")
         return
+    print(f"✅ Test Result:  {test}")
+
+    start = time.time()
     final = Part1(input)
-    if final == part_1_final_answer:
-        print(f"✅ Final Result: {final}")
-    else:
+    stop = time.time()
+    total_time = (stop - start) * 1000
+    if final != part_1_final_answer:
         print(f"❌ Final Result: {final}, expected {part_1_final_answer}")
         return
+    print(f"✅ Final Result: {final}")
+    print(f"⏱️  Execution Time: {total_time:.2f} ms")
 
 
 def Part2Runner():
@@ -29,17 +34,20 @@ def Part2Runner():
     part_2_final_answer = 25912654282
     print("-------- Part 2 --------")
     test = Part2(test_input_1)
-    if test == part_2_test_answer:
-        print(f"✅ Test Result:  {test}")
-    else:
+    if test != part_2_test_answer:
         print(f"❌ Test Result:  {test}, expected {part_2_test_answer}")
         return
+    print(f"✅ Test Result:  {test}")
+
+    start = time.time()
     final = Part2(input)
-    if final == part_2_final_answer:
-        print(f"✅ Final Result: {final}")
-    else:
+    stop = time.time()
+    total_time = (stop - start) * 1000
+    if final != part_2_final_answer:
         print(f"❌ Final Result: {final}, expected {part_2_final_answer}")
         return
+    print(f"✅ Final Result: {final}")
+    print(f"⏱️  Execution Time: {total_time:.2f} ms")
 
 
 if __name__ == "__main__":
