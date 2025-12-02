@@ -12,7 +12,7 @@ def Part2(input):
 
             n = len(num_str)
 
-            for m in range(1, n):
+            for m in range(1, (n // 2) + 1):
                 # q: quotent, r: remainder
                 _, r = divmod(n, m)
 
@@ -22,7 +22,7 @@ def Part2(input):
 
                 num_strs = textwrap.wrap(num_str, m)
 
-                if not all(x == [0] for x in num_strs):
+                if not all(x == num_strs[0] for x in num_strs):
                     continue
 
                 sum += num
