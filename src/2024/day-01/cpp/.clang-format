@@ -1,0 +1,14 @@
+# General Style
+# BasedOnStyle: WebKit
+# BasedOnStyle: LLVM
+# BasedOnStyle: Google
+# BasedOnStyle: Mozilla
+# BasedOnStyle: Microsoft
+# BasedOnStyle: GNU
+# BasedOnStyle: Chromium
+IndentWidth: 2
+ContinuationIndentWidth: 2
+ColumnLimit: 100 # Lower column limit to force line breaks
+
+BreakBeforeBinaryOperators: NonAssignment
+AlignOperands: false # Disable operand alignment to avoid inconsistent indentation

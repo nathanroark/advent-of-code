@@ -1,0 +1,3 @@
+/Users/nathan/code/advent-of-code/src/2023/day-01/cpp/build/CMakeFiles/aoc.dir
+/Users/nathan/code/advent-of-code/src/2023/day-01/cpp/build/CMakeFiles/edit_cache.dir
+/Users/nathan/code/advent-of-code/src/2023/day-01/cpp/build/CMakeFiles/rebuild_cache.dir
