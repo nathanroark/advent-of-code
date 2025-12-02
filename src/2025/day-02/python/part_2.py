@@ -8,9 +8,9 @@ def Part2(input):
         id = d.split("-")
         first_id, last_id = int(id[0]), int(id[1])
         for num in range(first_id, last_id + 1):
-            num_string = str(num)
+            num_str = str(num)
 
-            n = len(num_string)
+            n = len(num_str)
 
             for m in range(1, n):
                 # q: quotent, r: remainder
@@ -20,9 +20,9 @@ def Part2(input):
                 if r != 0:
                     continue
 
-                nums = textwrap.wrap(num_string, m)
+                num_strs = textwrap.wrap(num_str, m)
 
-                if not all(x == nums[0] for x in nums):
+                if not all(x == [0] for x in num_strs):
                     continue
 
                 sum += num
