@@ -1,17 +1,31 @@
+import textwrap
+
+
 def Part2(input):
-    password, count = 50, 0
-    for line in input.strip().splitlines():
-        direction, rotation = line[0], int(line[1:])
-        rotation = rotation if direction == "R" else -rotation
+    data = input.strip().split(",")
+    sum = 0
+    for d in data:
+        id = d.split("-")
+        first_id, last_id = int(id[0]), int(id[1])
+        for num in range(first_id, last_id + 1):
+            num_string = str(num)
 
-        new_password = password + rotation
+            n = len(num_string)
 
-        # detect positive to negative crossing on a left turn
-        if direction == "L" and password > 0 > new_password:
-            count += 1
+            for m in range(1, n):
+                # q: quotent, r: remainder
+                _, r = divmod(n, m)
 
-        password = new_password
-        count += (abs(password) // 100) or (1 if password == 0 else 0)
-        password %= 100
+                # check for even split
+                if r != 0:
+                    continue
 
-    return count
+                nums = textwrap.wrap(num_string, m)
+
+                if not all(x == nums[0] for x in nums):
+                    continue
+
+                sum += num
+                break
+
+    return sum
