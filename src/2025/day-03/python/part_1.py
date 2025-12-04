@@ -1,7 +1,7 @@
 def Part1(input):
     digits = 2
     sum = 0
-    for d in input.strip().split("\n"):
+    for d in input.strip().splitlines():
         n = len(d)
         dp = [[-1] * (digits + 1) for _ in range(n + 1)]
         dp[0][0] = 0

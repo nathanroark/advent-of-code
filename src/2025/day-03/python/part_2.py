@@ -1,13 +1,14 @@
 def Part2(input):
     digits = 12
     sum = 0
-    for d in input.strip().split("\n"):
+    for d in input.strip().splitlines():
         n = len(d)
         dp = [[-1] * (digits + 1) for _ in range(n + 1)]
         dp[0][0] = 0
 
         for i in range(1, n + 1):
             digit = int(d[i - 1])
+            # Build out each row for each digit column
             for j in range(digits + 1):
                 # Not take the current digit
                 dp[i][j] = max(dp[i][j], dp[i - 1][j])
