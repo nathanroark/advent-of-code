@@ -1,5 +1,3 @@
-# find largest number that can be formed by selecting 12 digits from each line of input
-# digits must come out of the line in order
 def Part2(input):
     digits = 12
     sum = 0
