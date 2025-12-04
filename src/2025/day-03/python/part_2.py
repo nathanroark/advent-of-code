@@ -17,6 +17,5 @@ def Part2(input):
                     value = dp[i - 1][j - 1] * 10 + digit
                     dp[i][j] = max(dp[i][j], value)
 
-        max_digit = dp[n][digits]
-        sum += max_digit
+        sum += dp[n][digits]
     return sum
