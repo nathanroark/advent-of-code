@@ -30,8 +30,8 @@ def Part1Runner():
 def Part2Runner():
     from part_2 import Part2
 
-    part_2_test_answer = 3
-    part_2_final_answer = 366
+    part_2_test_answer = 14
+    part_2_final_answer = 352509891817881
     print("-------- Part 2 --------")
     test = Part2(test_input_1)
     if test != part_2_test_answer:
@@ -53,3 +53,4 @@ def Part2Runner():
 if __name__ == "__main__":
     print("============ Day 05 ============")
     Part1Runner()
+    Part2Runner()

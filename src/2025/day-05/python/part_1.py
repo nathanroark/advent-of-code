@@ -12,17 +12,13 @@ def Part1(input):
         extended = False
         for fresh in fresh_ranges:
             # option 1: extend lower bound
-            if r1 < fresh[0] and r2 >= fresh[0] and r2 < fresh[1]:
+            if r1 <= fresh[0] and r2 >= fresh[0] and r2 <= fresh[1]:
                 fresh[0] = r1
                 extended = True
-            # option 2: extend upper bound
-            if r2 > fresh[1] and r1 > fresh[0] and r1 < fresh[1]:
-                fresh[1] = r2
-                extended = True
 
-            # option 3: extend both
-            if r1 < fresh[0] and r2 > fresh[1]:
-                fresh[0], fresh[1] = r1, r2
+            # option 2: extend upper bound
+            if r2 >= fresh[1] and r1 >= fresh[0] and r1 <= fresh[1]:
+                fresh[1] = r2
                 extended = True
 
         # option 3: add unique range
