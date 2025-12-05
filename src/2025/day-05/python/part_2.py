@@ -9,7 +9,7 @@ def Part2(input):
         r1, r2 = line.split("-")
         ranges.append([int(r1), int(r2)])
 
-    # Sort then so we extend them easily
+    # Sort them so we extend them easily
     ranges.sort()
 
     # Merge overlapping/adjacent ranges
