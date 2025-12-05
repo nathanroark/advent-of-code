@@ -51,6 +51,6 @@ def Part2Runner():
 
 
 if __name__ == "__main__":
-    print("============ Day 03 ============")
+    print("============ Day 04 ============")
     Part1Runner()
     Part2Runner()
