@@ -7,8 +7,8 @@ test_input_1 = open("../data/test-input-1.txt", "r", encoding="utf-8").read()
 def Part1Runner():
     from part_1 import Part1
 
-    part_1_test_answer = 13
-    part_1_final_answer = 1409
+    part_1_test_answer = 3
+    part_1_final_answer = 674
     print("-------- Part 1 --------")
     test = Part1(test_input_1)
     if test != part_1_test_answer:
@@ -52,4 +52,4 @@ def Part2Runner():
 
 if __name__ == "__main__":
     print("============ Day 05 ============")
-    # Part1Runner()
+    Part1Runner()
