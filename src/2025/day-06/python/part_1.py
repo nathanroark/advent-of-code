@@ -1,43 +1,48 @@
 def Part1(input):
-    # Ranges (e.g.: (3, 5), (10, 18))
-    fresh_ranges: list[list[int]] = []
+    # Step 1: Parse input into grid
+    # ---------------------------------------------
+    grid: list[list[int]] = []
     lines = input.strip().splitlines()
-    i = 0
+    for line in lines:
+        grid.append([int(x) if x.isdigit() else x for x in line.strip().split()])
 
-    # Build ranges
-    # ---------------------------
-    while True:
-        r1, r2 = lines[i].split("-")
-        r1, r2 = int(r1), int(r2)
-        extended = False
-        for fresh in fresh_ranges:
-            # option 1: extend lower bound
-            if r1 <= fresh[0] and r2 >= fresh[0] and r2 <= fresh[1]:
-                fresh[0] = r1
-                extended = True
+    # Step 2: Transpose grid to something easy
+    # ----------------------------------------------
+    #
+    # Initial grid:
+    # ---------------------
+    # 123 328  51 64
+    #  45 64  387 23
+    #   6 98  215 314
+    # *   +   *   +
+    #
+    # Transpose grid to:
+    # ---------------------
+    # * 6 45 123
+    # + 98 64 328
+    # * 215 387 51
+    # + 314 23 64
+    grid = [list(col)[::-1] for col in zip(*grid)]
 
-            # option 2: extend upper bound
-            if r2 >= fresh[1] and r1 >= fresh[0] and r1 <= fresh[1]:
-                fresh[1] = r2
-                extended = True
+    # Step 3: Evaluate each row and sum results
+    # -----------------------------------------------
+    result_sum = 0
+    for row in grid:
+        operation = None
+        row_result = None
+        for item in row:
+            # print(item)
+            if isinstance(item, str):
+                operation = item
+            else:
+                if row_result is None:  # first int
+                    row_result = item
+                else:
+                    if operation == "*":
+                        row_result *= item
+                    elif operation == "+":
+                        row_result += item
+        if row_result is not None:
+            result_sum += row_result
 
-        # option 3: add unique range
-        if not extended:
-            fresh_ranges.append([int(r1), int(r2)])
-
-        i += 1
-        if lines[i] == "":
-            break
-
-    i += 1
-
-    # Check freshness
-    # ---------------------------
-    count = 0
-    for j in range(i, len(lines)):
-        for fresh in fresh_ranges:
-            if int(lines[j]) >= fresh[0] and int(lines[j]) <= fresh[1]:
-                count += 1
-                break
-
-    return count
+    return result_sum
