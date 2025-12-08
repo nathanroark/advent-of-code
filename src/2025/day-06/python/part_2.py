@@ -1,31 +1,44 @@
 def Part2(input):
-    ranges = []
+    # Step 1: Parse input into grid
+    # ---------------------------------------------
+    #
+    # Initial grid:
+    # ---------------------
+    # 123 328  51 64
+    #  45 64  387 23
+    #   6 98  215 314
+    # *   +   *   +
+    #
+    # grid: math is written right-to-left in columns
+    # ---------------------
+    # + 4 431 623
+    # * 175 581 32
+    # + 8 248 369
+    # * 356 24 1
+    grid = []
+    lines = input.strip().splitlines()
+    n = len(lines)
+    m = len(lines[0])
 
-    # Parse all ranges
-    # -------------------------------------------------
-    for line in input.strip().splitlines():
-        if line == "":
-            break
-        r1, r2 = line.split("-")
-        ranges.append([int(r1), int(r2)])
+    # Step 2: Evaluate each row and sum results
+    # -----------------------------------------------
+    result_sum = 0
+    for row in grid:
+        operation = None
+        row_result = None
+        for item in row:
+            # print(item)
+            if isinstance(item, str):
+                operation = item
+            else:
+                if row_result is None:  # first int
+                    row_result = item
+                else:
+                    if operation == "*":
+                        row_result *= item
+                    elif operation == "+":
+                        row_result += item
+        if row_result is not None:
+            result_sum += row_result
 
-    # Sort them so we extend them easily
-    ranges.sort()
-
-    # Merge overlapping/adjacent ranges
-    # -------------------------------------------------
-    merged = [ranges[0]]
-    for current in ranges[1:]:
-        # If current overlaps or is adjacent to last, merge them
-        if current[0] <= merged[-1][1] + 1:  # +1 to connect adjacent ranges
-            merged[-1][1] = max(merged[-1][1], current[1])
-        else:
-            merged.append(current)
-
-    # Count coverage
-    # -------------------------------------------------
-    count = 0
-    for r in merged:
-        count += r[1] - r[0] + 1
-
-    return count
+    return result_sum
