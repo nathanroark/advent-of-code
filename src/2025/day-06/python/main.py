@@ -28,10 +28,10 @@ def Part1Runner():
 
 
 def Part2Runner():
-    from part_2 import Part2
+    from part_2b import Part2
 
-    part_2_test_answer = 14
-    part_2_final_answer = 352509891817881
+    part_2_test_answer = 3263827
+    part_2_final_answer = 8486156119946
     print("-------- Part 2 --------")
     test = Part2(test_input_1)
     if test != part_2_test_answer:
